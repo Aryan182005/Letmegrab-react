@@ -1,67 +1,76 @@
 import React from 'react';
-import { Home, Search, PlusCircle, Heart, Settings, HelpCircle, LogOut } from 'lucide-react';
+import { Home, Settings,  LogOut, BarChart3, ReceiptText, Package, Wallet, Inbox, Users, LifeBuoy, LogOutIcon, DoorOpen, ArrowBigLeft } from 'lucide-react';
 import letmegrabLogo from '../assets/lermegrab_logo.png';
+import { FaArrowLeft } from "react-icons/fa6";
 
 const Sidebar = () => {
   const menuItems = [
-    { icon: Home, label: 'Home', active: true },
-    { icon: Search, label: 'Search', active: false },
-    { icon: PlusCircle, label: 'Create', active: false },
-    { icon: Heart, label: 'Favorites', active: false },
+    { icon: Home, label: 'Dashboard', active: true },
+    { icon: BarChart3, label: 'Insight', active: false },
+    { icon: ReceiptText, label: 'Invoices', active: false },
+    { icon: Package, label: 'Products', active: false },
+    { icon: Wallet, label: 'Reimburse', active: false },
+    { icon: Inbox, label: 'Inbox', active: false },
+    { icon: Users, label: 'People & Teams', active: false },
   ];
 
   const preferencesItems = [
     { icon: Settings, label: 'Settings', active: false },
-    { icon: HelpCircle, label: 'Help & Support', active: false },
-    { icon: LogOut, label: 'Logout', active: false },
+    { icon: LifeBuoy, label: 'Help Center', active: false },
+    { icon: Users, label: 'Dark Mode', active: false },
   ];
 
   return (
-    <div className="w-[286px] bg-white h-screen flex flex-col">
-      {/* Logo Section */}
+    <div className="w-[286px] bg-white h-screen flex flex-col relative border-r border-[#F3F5F7]">
+      <div className="absolute top-6 -right-3 shadow-primary border border-[#40A19866] bg-white p-1 w-[25px] h-[25px] rounded-md  flex items-center justify-center cursor-pointer">
+        <FaArrowLeft size={16} className='text-primary w-[13px] h-[13px]  '/>
+      </div>
       <div className="p-6">
         <div className="flex items-center space-x-2">
           <img src={letmegrabLogo} alt="LetMeGrab Logo" className='w-[162px] h-[50px]'/>
         </div>
       </div>
 
-      {/* Menu Items */}
-      <div className="flex-1 px-4">
+      <div className="overflow-y-auto">
+        <div className="flex-1 px-4">
+        <h6 className="text-sm text-[#90A3BF] font-medium mb-3 px-4">Main Menu</h6>
         <div className="space-y-2">
           {menuItems.map((item, index) => (
             <button
               key={index}
               className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
                 item.active
-                  ? 'bg-purple-600 text-white'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                  ? 'bg-primary text-white'
+                  : 'text-gray-400 hover:text-white hover:bg-primary'
               }`}
             >
               <item.icon size={20} />
-              <span className="font-medium">{item.label}</span>
+              <span className="font-medium text-[18px]">{item.label}</span>
             </button>
           ))}
         </div>
 
-        {/* Preferences Section */}
-        <div className="mt-8 space-y-2">
+        <div className="mt-8">
+          <h6 className="text-sm text-[#90A3BF] font-medium mb-3 px-4">Preferences</h6>
+          <div className=" space-y-2">
           {preferencesItems.map((item, index) => (
             <button
               key={index}
-              className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-all"
+              className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-primary transition-all"
             >
               <item.icon size={20} />
               <span className="font-medium">{item.label}</span>
             </button>
           ))}
         </div>
+        </div>
       </div>
 
-      {/* Upgrade Button */}
-      <div className="p-4">
-        <button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 px-4 rounded-lg font-medium hover:opacity-90 transition-opacity">
-          Upgrade to Pro
+      <div className="p-4 mt-10">
+        <button className="flex items-center gap-3 w-full  text-[#596780] py-3 px-4 rounded-lg font-medium">
+          <LogOut size={20} /> Log Out
         </button>
+      </div>
       </div>
     </div>
   );
